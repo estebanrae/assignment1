@@ -1,0 +1,9 @@
+1|Michael Phelps|32|Victoria
+2|Mark Spitz|22|NSW
+3|Ian Thorpe|25|Queensland
+4|Ryan Lochte|27|Tasmania
+5|Kristin Otto|26|Victoria
+6|Aleksandr Popov|33|NSW
+7|Pieter van den Hoogenband|29|Tasmania
+8|Johnny Weissmuller|26|Queensland
+9|Grant Hackett|30|Victoria
