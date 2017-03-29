@@ -7,7 +7,8 @@ public class Swimmer extends Athlete{
 	}
 
 	public double compete() {
-		
+		System.out.println("swimming!");
+		setPoints(2);
 		return 0;
 	}
 

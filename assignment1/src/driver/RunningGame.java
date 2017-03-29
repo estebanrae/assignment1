@@ -8,7 +8,7 @@ public class RunningGame extends Game {
 	}
 
 	@Override
-	public void runGame() {
+	public void runGame(Athlete athl) {
 		
 	}
 

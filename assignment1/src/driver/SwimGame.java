@@ -8,8 +8,8 @@ public class SwimGame extends Game {
 	}
 
 	@Override
-	public void runGame() {
-			
+	public void runGame(Athlete athl) {
+		athl.compete();
 	}
 
 }

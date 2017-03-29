@@ -8,7 +8,7 @@ public class CycleGame extends Game {
 	}
 
 	@Override
-	public void runGame() {
+	public void runGame(Athlete athl) {
 		// TODO Auto-generated method stub
 		
 	}

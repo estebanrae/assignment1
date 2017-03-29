@@ -4,7 +4,7 @@ public abstract class Game {
 	private String ID;
 	private Official official;
 	
-	public abstract void runGame();
+	public abstract void runGame(Athlete athl);
 	
 	public Game(String gameStr){
 		

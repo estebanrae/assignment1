@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Reader {
+	static int lines;
+	
 	static public String[] readFile(String path){
 		String[] lines = new String[30];
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -14,7 +16,7 @@ public class Reader {
 				lines[cnt] = sCurrentLine;
 				cnt++;
 			}
-			System.out.println(lines.length);
+			Reader.lines = cnt;
 
 		} catch (IOException e) {
 			lines[0] = "Error";

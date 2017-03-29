@@ -11,7 +11,46 @@ public class Participant {
 	}
 	
 	public Participant(String stringedPpt){
+		char[] arrPpt = stringedPpt.toCharArray();
+		char[] temp = new char[100];
+		int index = 0;
+		int subindex = 0;
+		while(arrPpt[index] != '|'){
+			temp[subindex] = arrPpt[index];
+			index++;
+			subindex++;
+		}
+		this.ID = new String(temp);
+		index++;
+		subindex = 0;
+		temp = new char[100];
+		while(arrPpt[index] != '|'){
+			temp[subindex] = arrPpt[index];
+			index++;
+			subindex++;
+		}
+		this.name = new String(temp);
+		index++;
+		subindex = 0;
+		temp = new char[100];
+		while(arrPpt[index] != '|'){
+			temp[subindex] = arrPpt[index];
+			index++;
+			subindex++;
+		}
+		//this.age = Integer.parseInt(temp.toString());
+		index++;
+		subindex = 0;
+		temp = new char[100];
+		while(index < arrPpt.length){
+			temp[subindex] = arrPpt[index];
+			index++;
+			subindex++;
+		}
+		this.state = new String(temp);
 		
+		System.out.println(this.state);
+		//System.out.println(this.ID);
 	}
 	
 	
