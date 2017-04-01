@@ -1,14 +1,16 @@
 package driver;
 
 public class Driver {
-
-	public static void options() {
-		int i;
-		String[] swimmersTxt= Reader.readFile("../files/swimmers.txt");
-		Athlete[] swimmers = new Swimmer[Reader.lines];
-		for(i = 0; i< swimmers.length; i++){
-			swimmers[i] = new Swimmer(swimmersTxt[i]);
-		}
+	/*
+	private Athlete[] swimmers;
+	private Athlete[] cyclists;
+	private Athlete[] sprinters;
+	*/
+	private Athlete[] athletes;
+	private Official[] officials;
+	private Game[] games;
+	
+	public void options() {
 		int menuOpt, subMenuOpt;
 		do{
 			MainMenu.showMenu();
@@ -16,9 +18,6 @@ public class Driver {
 			if(menuOpt == 1){
 				GamesMenu.showMenu();
 				subMenuOpt = Menu.optionSelect();
-				SwimGame swim1 = new SwimGame("");
-				swim1.runGame(swimmers[0]);
-				System.out.println(swimmers[0].getPoints());
 			}else if(menuOpt ==2){
 				System.out.println("Option 2");
 			}else if(menuOpt ==3){
@@ -32,5 +31,49 @@ public class Driver {
 			}
 		}while(menuOpt != 6);
 		
+	}
+	
+	public void init(){
+		int i, swimmerLength, cycleLength, sprinterLength, swimGameLength, cycleGameLength, sprintGameLength;
+		/* Initializing all athletes */
+		String[] swimmersTxt= Reader.readFile("../files/swimmers.txt");
+		swimmerLength = Reader.lines;
+		String[] cyclistsTxt= Reader.readFile("../files/cyclists.txt");
+		cycleLength = Reader.lines;
+		String[] sprintersTxt= Reader.readFile("../files/sprinters.txt");
+		sprinterLength = Reader.lines;
+		athletes = new Athlete[swimmerLength + cycleLength + sprinterLength];
+		for (i = 0; i < swimmerLength; i++){
+			athletes[i] = new Swimmer(swimmersTxt[i]);
+		}
+		for (i = swimmerLength; i < cycleLength; i++){
+			athletes[i] = new Cyclist(cyclistsTxt[i]);
+		}
+		for (i = cycleLength; i < sprinterLength; i++){
+			athletes[i] = new Sprinter(sprintersTxt[i]);
+		}
+		/* Initializing officials */
+		String[] officialTxt= Reader.readFile("../files/officials.txt");
+		int officialLength = Reader.lines;
+		for(i = 0; i< officialLength; i++){
+			officials[i] = new Official(officialTxt[i]);
+		}
+		/* Initializing all games */
+		String[] swimGamesTxt= Reader.readFile("../files/swimgames.txt");
+		int swimGamesLength = Reader.lines;
+		String[] cycleGamesTxt= Reader.readFile("../files/cyclegames.txt");
+		int cycleGamesLength = Reader.lines;
+		String[] sprinterGamesTxt= Reader.readFile("../files/sprintergames.txt");
+		int sprinterGamesLength = Reader.lines;
+		games = new Game[swimGamesLength + cycleGamesLength + sprinterGamesLength];
+		for(i = 0; i< swimGamesLength; i++){
+			games[i] = new SwimGame(swimGamesTxt[i]);
+		}
+		for(i = swimGamesLength; i< cycleGamesLength; i++){
+			games[i] = new CycleGame(cycleGamesTxt[i]);
+		}
+		for(i = cycleGamesLength; i< sprinterGamesLength; i++){
+			games[i] = new RunningGame(sprinterGamesTxt[i]);
+		}	
 	}
 }
