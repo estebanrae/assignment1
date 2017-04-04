@@ -1,17 +1,17 @@
 package driver;
 
 public class MainMenu {
-	static private String selectedGame = "";
-	static private String prediction = "";
+	static private Game selectedGame;
+	static private Game prediction;
 	static public void showMenu(){
 		System.out.println("\tWelcome to the Ozlympic Games!\n");
 		System.out.println("********************************");
-		if(selectedGame == ""){
+		if(selectedGame == null){
 			System.out.println("No game selected ");
 		}else{
-			System.out.println("Game: " + selectedGame);
-			if(prediction != ""){
-				System.out.println("Predicted winner: " + prediction);
+			System.out.println("Game: " + selectedGame.getName());
+			if(prediction != null){
+				System.out.println("Predicted winner: " + prediction.getName());
 			}
 		}//if(selectedGame == "")
 		System.out.println("********************************");
@@ -24,15 +24,15 @@ public class MainMenu {
 		System.out.println("6. Exit\n");	
 	}//static public int showMenu()
 	
-	static public void setSelectedGame(String game){
+	static public void setSelectedGame(Game game){
 		selectedGame = game;
 	}
 
-	public static String getPrediction() {
+	public static Game getPrediction() {
 		return prediction;
 	}
 
-	public static void setPrediction(String prediction) {
+	public static void setPrediction(Game prediction) {
 		MainMenu.prediction = prediction;
 	}
 	

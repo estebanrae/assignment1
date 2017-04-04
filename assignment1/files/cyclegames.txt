@@ -1,0 +1,3 @@
+gc01|First Cycling Race
+gc02|Second Cycling Race
+gc03|Third Cycling Race

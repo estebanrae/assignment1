@@ -1,14 +1,21 @@
 package driver;
 
-public class Cyclist extends Athlete{
+import java.util.Random;
 
+public class Cyclist extends Athlete implements CanCycle{
+	private final int MAX_CYCLE = 500;
+	private final int MIN_CYCLE = 800;
+	
 	public Cyclist(String stringedPpt) {
 		super(stringedPpt);
 	}
 
-	public double compete() {
-		
-		return 0;
+	public void compete(int x) {
 	}
 
+	@Override
+	public void cycle() {
+		double result = (new Random().nextDouble() * (MAX_CYCLE - MIN_CYCLE)) + MIN_CYCLE;
+		System.out.println(result);
+	}
 }

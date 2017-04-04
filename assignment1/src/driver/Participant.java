@@ -6,13 +6,9 @@ public class Participant {
 	private int age;
 	private String state;
 	
-	public Participant(String ID, String name, int age, String state){
-		
-	}
-	
 	public Participant(String stringedPpt){
 		char[] arrPpt = stringedPpt.toCharArray();
-		char[] temp = new char[100];
+		char[] temp = new char[256];
 		int index = 0;
 		int subindex = 0;
 		while(arrPpt[index] != '|'){
@@ -48,8 +44,6 @@ public class Participant {
 			subindex++;
 		}
 		this.state = new String(temp);
-		
-		System.out.println(this.state);
 		//System.out.println(this.ID);
 	}
 	

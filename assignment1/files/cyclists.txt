@@ -1,0 +1,9 @@
+c01|Alberto Contador|32|Victoria
+c02|Sean Kelly|22|NSW
+c03|Gino Bartali|25|Queensland
+c04|Lance Armstrong|27|Tasmania
+c05|Alfredo Binda|26|Victoria
+c06|Miguel Indurain|33|NSW
+c07|Jacque Anquetil|29|Tasmania
+c08|Fausto Coppi|26|Queensland
+c09|Bernard Hinault|30|Victoria

@@ -1,0 +1,9 @@
+o01|Barney Stinson|32|Victoria
+o02|Rick Sanchez|72|NSW
+o03|Morty Smith|12|Queensland
+o04|Jon Snow|27|Tasmania
+o05|Peter Parker|18|Victoria
+o06|Walter White|52|NSW
+o07|Tommy Pickles|20|Tasmania
+o08|Barry Allen|26|Queensland
+o09|Arthur Curry|30|Victoria

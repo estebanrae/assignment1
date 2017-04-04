@@ -1,15 +1,20 @@
 package driver;
 
-public class Swimmer extends Athlete{
+import java.util.Random;
+
+public class Swimmer extends Athlete implements CanSwim{
 
 	public Swimmer(String stringedPpt) {
 		super(stringedPpt);
 	}
 
-	public double compete() {
-		System.out.println("swimming!");
-		setPoints(2);
-		return 0;
+	public void compete(int x) {
+		swim();
 	}
 
+	@Override
+	public void swim() {
+		double result = (new Random().nextDouble() * (MAX_SWIM - MIN_SWIM)) + MIN_SWIM;
+		setCurrent_score(result);
+	}
 }

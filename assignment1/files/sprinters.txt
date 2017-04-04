@@ -1,0 +1,9 @@
+r01|Haile Gebrselassie|32|Victoria
+r02|Emil Zatopek|22|NSW
+r03|Paula Radcliffe|25|Queensland
+r04|Anna Guevara|27|Tasmania
+r05|Meb Keflezighi|26|Victoria
+r06|Usain Bolt|33|NSW
+r07|Florence Griffith|29|Tasmania
+r08|Deena Kastor|26|Queensland
+r09|Geoffrey Mutai|30|Victoria

@@ -1,0 +1,3 @@
+gs01|First Swim Race
+gs02|Second Swim Race
+gs03|Third Swim Race

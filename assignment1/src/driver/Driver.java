@@ -13,18 +13,20 @@ public class Driver {
 	public void options() {
 		int menuOpt, subMenuOpt;
 		do{
-			MainMenu.showMenu();
+			Menu.showMainMenu();
 			menuOpt = Menu.optionSelect();
 			if(menuOpt == 1){
-				GamesMenu.showMenu();
-				subMenuOpt = Menu.optionSelect();
+				Menu.showGameMenu(games);
+				Menu.selectGame(games);			
 			}else if(menuOpt ==2){
-				System.out.println("Option 2");
+				Menu.showPredictionMenu();
 			}else if(menuOpt ==3){
+				Menu.getSelectedGame().runGame();
 				System.out.println("Option 3");
 			}else if(menuOpt ==4){
 				System.out.println("Option 4");
 			}else if(menuOpt ==5){
+				Menu.showAthletePoints(athletes);
 				System.out.println("Option 5");
 			}else if(menuOpt != 6){
 				Menu.displayError();
@@ -34,7 +36,7 @@ public class Driver {
 	}
 	
 	public void init(){
-		int i, swimmerLength, cycleLength, sprinterLength, swimGameLength, cycleGameLength, sprintGameLength;
+		int i, swimmerLength, cycleLength, sprinterLength, swimGameLength, cycleGameLength, sprintGameLength, superAthleteLength;
 		/* Initializing all athletes */
 		String[] swimmersTxt= Reader.readFile("../files/swimmers.txt");
 		swimmerLength = Reader.lines;
@@ -42,19 +44,25 @@ public class Driver {
 		cycleLength = Reader.lines;
 		String[] sprintersTxt= Reader.readFile("../files/sprinters.txt");
 		sprinterLength = Reader.lines;
-		athletes = new Athlete[swimmerLength + cycleLength + sprinterLength];
+		String[] superAthleteTxt= Reader.readFile("../files/super_athletes.txt");
+		superAthleteLength = Reader.lines;
+		athletes = new Athlete[swimmerLength + cycleLength + sprinterLength + superAthleteLength];
 		for (i = 0; i < swimmerLength; i++){
 			athletes[i] = new Swimmer(swimmersTxt[i]);
 		}
-		for (i = swimmerLength; i < cycleLength; i++){
-			athletes[i] = new Cyclist(cyclistsTxt[i]);
+		for (i = 0; i < cycleLength; i++){
+			athletes[i  + swimmerLength] = new Cyclist(cyclistsTxt[i]);
 		}
-		for (i = cycleLength; i < sprinterLength; i++){
-			athletes[i] = new Sprinter(sprintersTxt[i]);
+		for (i = 0; i < sprinterLength; i++){
+			athletes[i + cycleLength + swimmerLength] = new Sprinter(sprintersTxt[i]);
+		}
+		for (i = 0; i < superAthleteLength; i++){
+			athletes[sprinterLength + cycleLength + swimmerLength + i] = new SuperAthlete(superAthleteTxt[i]);
 		}
 		/* Initializing officials */
 		String[] officialTxt= Reader.readFile("../files/officials.txt");
 		int officialLength = Reader.lines;
+		officials = new Official[officialLength];
 		for(i = 0; i< officialLength; i++){
 			officials[i] = new Official(officialTxt[i]);
 		}
@@ -67,13 +75,13 @@ public class Driver {
 		int sprinterGamesLength = Reader.lines;
 		games = new Game[swimGamesLength + cycleGamesLength + sprinterGamesLength];
 		for(i = 0; i< swimGamesLength; i++){
-			games[i] = new SwimGame(swimGamesTxt[i]);
+			games[i] = new SwimGame(swimGamesTxt[i], officials, athletes);
 		}
-		for(i = swimGamesLength; i< cycleGamesLength; i++){
-			games[i] = new CycleGame(cycleGamesTxt[i]);
+		for(i = 0; i< cycleGamesLength; i++){
+			games[swimGamesLength + i] = new CycleGame(cycleGamesTxt[i], officials, athletes);
 		}
-		for(i = cycleGamesLength; i< sprinterGamesLength; i++){
-			games[i] = new RunningGame(sprinterGamesTxt[i]);
+		for(i = 0; i< sprinterGamesLength; i++){
+			games[swimGamesLength + cycleGamesLength + i] = new RunningGame(sprinterGamesTxt[i], officials, athletes);
 		}	
 	}
 }

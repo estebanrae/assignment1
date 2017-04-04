@@ -2,16 +2,25 @@ package driver;
 
 public class GamesMenu {
 
-	static public void showMenu() {
+	static public void showMenu(Game[] games) {
+		int i;
 		System.out.println("Select a game");
 		System.out.println("********************************");
-		// This should be read from a file
-		System.out.println("1. S01, First swimming race");
-		System.out.println("2. S02, Second swimming race");
-		System.out.println("3. C01, First cycling race");
-		System.out.println("4. C02, Second cycling race");
-		System.out.println("5. R01, First distance race");
-		System.out.println("6. Return");
+		for(i = 0; i < games.length; i++){
+			System.out.println((i+1) + " - " + games[i].getID() + ", " + games[i].getName());
+		}
+		System.out.println(i + " - Return");
+	}
+	
+	static public void selectGame(Game[] games){
+		int subMenuOpt = Menu.optionSelect();
+		if(subMenuOpt < 1 || subMenuOpt > games.length){
+			Menu.displayError();
+		}else if(subMenuOpt == games.length){
+			return;
+		}else{
+			MainMenu.setSelectedGame(games[subMenuOpt - 1]);
+		}
 	}
 	
 }

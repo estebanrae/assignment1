@@ -1,0 +1,9 @@
+sa01|Michael Jordan|32|Victoria
+sa02|Bo Jackson|22|NSW
+sa03|Lebron James|25|Queensland
+sa04|Tiger Woods|27|Tasmania
+sa05|Muhammad Ali|26|Victoria
+sa06|Roger Federer|33|NSW
+sa07|Pelé|29|Tasmania
+sa08|Lionel Messi|26|Queensland
+sa09|Tom Brady|30|Victoria

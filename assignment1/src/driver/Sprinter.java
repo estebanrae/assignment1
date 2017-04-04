@@ -1,14 +1,20 @@
 package driver;
 
-public class Sprinter extends Athlete{
+import java.util.Random;
 
+public class Sprinter extends Athlete implements CanRun{
 	public Sprinter(String stringedPpt) {
 		super(stringedPpt);
 	}
 
-	public double compete() {
+	public void compete(int x) {
 		
-		return 0;
 	}
 
+	@Override
+	public void run() {
+		double result = (new Random().nextDouble() * (MAX_RUN - MIN_RUN)) + MIN_RUN;
+		System.out.println(result);
+	}
+	
 }
