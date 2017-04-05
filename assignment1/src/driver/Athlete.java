@@ -1,13 +1,13 @@
 package driver;
 
-public abstract class Athlete extends Participant {
-	private double current_score;
+public abstract class Athlete extends Participant implements Comparable<Athlete>{
+	private double current_score = 0;
+	private int points;
 	public Athlete(String stringedPpt) {
 		super(stringedPpt);
 		// TODO Auto-generated constructor stub
 	}
-	private int points;
-	public abstract void compete(int x);
+	public abstract void compete(Game x);
 	
 	public int getPoints() {
 		return points;
@@ -22,5 +22,14 @@ public abstract class Athlete extends Participant {
 
 	public void setCurrent_score(double current_score) {
 		this.current_score = current_score;
+	}
+	public int compareTo(Athlete other){
+		if(this.current_score < other.current_score){
+			return -1;
+		}else if(this.current_score > other.current_score){
+			return 1;
+		}else{
+			return 0;
+		}
 	}
 }

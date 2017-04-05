@@ -66,8 +66,8 @@ public class Menu {
 		return prediction;
 	}
 
-	public static void setPrediction(Game prediction) {
-		prediction = prediction;
+	public static void setPrediction(Athlete prediction) {
+		Menu.prediction = prediction;
 	}
 	
 	/* Game selection menu */
@@ -89,12 +89,13 @@ public class Menu {
 		}else if(subMenuOpt == games.length + 1){
 			return;
 		}else{
+			setPrediction(null);
 			setSelectedGame(games[subMenuOpt - 1]);
 		}
 	}
 	
 	static public void showPredictionMenu(){
-		int i, opt;
+		int opt;
 		selectedGame.showParticipants();
 		System.out.println("Which athlete do you predict will win?");
 		opt = optionSelect();
@@ -110,9 +111,13 @@ public class Menu {
 	
 	static public void showAthletePoints(Athlete[] athletes){
 		int i;
-		System.out.println("Current points for each athlete:");
+		System.out.println("\n\tPOINTS PER ATHLETE\n");
 		for(i = 0; i< athletes.length;i++){
-			System.out.println(athletes[i].getName() + " - " + athletes[i].getPoints() + " points.");
+			if(athletes[i].getPoints() == 1){
+				System.out.println(athletes[i].getName() + " - " + athletes[i].getPoints() + " point.");
+			}else{
+				System.out.println(athletes[i].getName() + " - " + athletes[i].getPoints() + " points.");
+			}
 		}
 		System.out.println("[press ENTER to continue]");
 		Scanner s = new Scanner(System.in);
@@ -123,19 +128,19 @@ public class Menu {
 	}
 	
 	static public void showPedestals(Athlete firstPlace, Athlete secondPlace, Athlete thirdPlace, Official off){
-		System.out.println(off.getName() + " says: ");
 		if(prediction != null){
+			System.out.println(off.getName() + " says: ");
 			if (prediction.getID() == firstPlace.getID()){
 				System.out.println("Your predicted athlete got first place! Congratulations!");
 			}else if(prediction.getID() == secondPlace.getID()){
 				System.out.println("Your predicted athlete got second place! Not bad");
-			}else if(prediction.getID() == secondPlace.getID()){
+			}else if(prediction.getID() == thirdPlace.getID()){
 				System.out.println("Your predicted athlete got third place! Not bad");
 			}else{
 				System.out.println("Sorry, your predicted athlete didn't do very well...");
 			}
 		}
-		System.out.println("\n\n\t WINNERS \n\n");
+		System.out.println("\n\n\t\t WINNERS \n\n");
 		System.out.println("                         " + firstPlace.getName() + "                          ");
 		System.out.println("                         ________________________                          ");
 		System.out.println("                         |          1           |                          ");
@@ -153,5 +158,39 @@ public class Menu {
 			s.nextLine();
 			return;
 		}
+	}
+	
+	static public void noSelectedGame(){
+		System.out.println("Please select a game to run");
+		System.out.println("[press ENTER to continue]");
+		Scanner s = new Scanner(System.in);
+		if(s.hasNextLine()){
+			s.nextLine();
+			return;
+		}
+	}
+	
+	static public void showAllGames(Game[] games){
+		int i, j;
+		System.out.println("\n\tGAME RESULTS");
+		System.out.println("********************************\n");
+		for(i = 0; i < games.length; i++){
+			System.out.println("\n" + games[i].getName() + ", officiated by " + games[i].getOfficial().getName());
+			if(games[i].getHasRun() == 1){
+				System.out.println("\tPlace  |  Name");
+				for(j = 0; j < games[i].getCompetitors().length; j++){
+					System.out.println("\t" + (j + 1) + "      |" + games[i].getCompetitors()[j].getName());
+				}
+			}else{
+				System.out.println("\t--Game hasn't run yet.--");
+			}
+		}
+		System.out.println("[press ENTER to continue]");
+		Scanner s = new Scanner(System.in);
+		if(s.hasNextLine()){
+			s.nextLine();
+			return;
+		}
+		
 	}
 }

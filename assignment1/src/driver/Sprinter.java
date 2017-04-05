@@ -7,14 +7,14 @@ public class Sprinter extends Athlete implements CanRun{
 		super(stringedPpt);
 	}
 
-	public void compete(int x) {
+	public void compete(Game x) {
 		
 	}
 
 	@Override
 	public void run() {
 		double result = (new Random().nextDouble() * (MAX_RUN - MIN_RUN)) + MIN_RUN;
-		System.out.println(result);
+		setCurrent_score(result);
 	}
 	
 }

@@ -10,12 +10,12 @@ public class Cyclist extends Athlete implements CanCycle{
 		super(stringedPpt);
 	}
 
-	public void compete(int x) {
+	public void compete(Game x) {
 	}
 
 	@Override
 	public void cycle() {
 		double result = (new Random().nextDouble() * (MAX_CYCLE - MIN_CYCLE)) + MIN_CYCLE;
-		System.out.println(result);
+		setCurrent_score(result);
 	}
 }

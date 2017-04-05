@@ -8,7 +8,7 @@ public class Swimmer extends Athlete implements CanSwim{
 		super(stringedPpt);
 	}
 
-	public void compete(int x) {
+	public void compete(Game x) {
 		swim();
 	}
 

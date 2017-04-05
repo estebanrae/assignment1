@@ -1,14 +1,45 @@
 package driver;
 
+import java.util.Arrays;
 import java.util.Random;
+import java.util.Scanner;
 
 public abstract class Game {
 	private String ID;
 	private String name;
 	private Official official;
 	private Athlete[] competitors;
+	private int hasRun = 0;
 	
-	public abstract void runGame();
+	public void runGame(){
+		if(this.getHasRun() != 0){
+			System.out.println("This game has already ran.");
+			System.out.println("Are you sure you wish to run it again?[Y/N]");
+			Scanner s = new Scanner(System.in);
+			String option;
+			option = s.nextLine();
+			if(!option.equals("Y") && !option.equals("y")){
+				return;
+			}else{
+				getCompetitors()[0].setPoints(getCompetitors()[0].getPoints() - 5);
+				getCompetitors()[1].setPoints(getCompetitors()[1].getPoints() - 2);
+				getCompetitors()[2].setPoints(getCompetitors()[2].getPoints() - 1);
+			}
+		}
+		int i;
+		for(i = 0; i < getCompetitors().length; i++){
+			getCompetitors()[i].compete(this);
+		}
+		Athlete[] orderedComp = new Athlete[8];
+		orderedComp =  getCompetitors();
+		Arrays.sort(orderedComp);
+		orderedComp[0].setPoints(orderedComp[0].getPoints() + 5);
+		orderedComp[1].setPoints(orderedComp[1].getPoints() + 2);
+		orderedComp[2].setPoints(orderedComp[2].getPoints() + 1);
+		this.setCompetitors(orderedComp);
+		this.setHasRun(1);
+		Menu.showPedestals(orderedComp[0], orderedComp[1], orderedComp[2], this.getOfficial());
+	}
 	
 	public Game(String gameStr, Official[] officials){
 		char[] arrGame = gameStr.toCharArray();
@@ -77,5 +108,13 @@ public abstract class Game {
 
 	public void setCompetitors(Athlete[] competitors) {
 		this.competitors = competitors;
+	}
+
+	public int getHasRun() {
+		return hasRun;
+	}
+
+	public void setHasRun(int hasRun) {
+		this.hasRun = hasRun;
 	}
 }

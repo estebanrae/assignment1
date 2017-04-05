@@ -1,6 +1,6 @@
 package driver;
 
-public class Participant {
+public abstract class Participant {
 	private String ID;
 	private String name;
 	private int age;

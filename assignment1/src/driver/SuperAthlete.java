@@ -15,12 +15,12 @@ public class SuperAthlete extends Athlete implements CanSwim, CanRun, CanCycle{
 	}
 
 	@Override
-	public void compete(int x) {
-		if(x == 1){
+	public void compete(Game x) {
+		if(x instanceof SwimGame){
 			swim();
-		}else if(x == 2){
+		}else if(x instanceof RunningGame){
 			run();
-		}else if(x == 3){
+		}else if(x instanceof CycleGame){
 			cycle();
 		}
 		
