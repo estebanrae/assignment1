@@ -1,7 +1,7 @@
 # Assignment 1
 
 # RMIT, Advanced Programming Course, Semester 1 2017
-# Author: Esteban Ramirez
+# Author: Esteban Ramirez, s3641207
 
 # Note abour files:
 # Since the information about games and participants is stored in files, it is important that the game is ran from the proper directory.
